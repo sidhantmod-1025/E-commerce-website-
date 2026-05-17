@@ -1,2 +1,414 @@
-# E-commerce-website-
-Useful E-commerce website 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ShopSmart E-Commerce</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background:#f5f5f5;
+  transition:0.3s;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+  background:#111;
+  color:white;
+  flex-wrap:wrap;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:bold;
+}
+
+nav{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+input{
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  width:220px;
+}
+
+button{
+  padding:10px 15px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+.theme-btn{
+  background:#ff9800;
+  color:white;
+}
+
+.hero{
+  text-align:center;
+  padding:50px 20px;
+}
+
+.hero h1{
+  font-size:40px;
+}
+
+.products{
+  width:90%;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding-bottom:40px;
+}
+
+.card{
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+.card img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:15px;
+}
+
+.card h2{
+  margin-bottom:10px;
+}
+
+.price{
+  color:green;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.add-btn{
+  background:#111;
+  color:white;
+  width:100%;
+}
+
+.cart-box{
+  font-size:18px;
+}
+
+/* Dark Mode */
+
+.dark{
+  background:#121212;
+  color:white;
+}
+
+.dark .card{
+  background:#1e1e1e;
+  color:white;
+}
+
+.dark header{
+  background:black;
+}
+/* Smooth transition */
+
+body{
+  background:#f5f5f5;
+  transition:0.4s ease;
+}
+
+/* Hero animation */
+
+.hero{
+  text-align:center;
+  padding:50px 20px;
+  animation:fadeIn 1s ease;
+}
+
+.hero h1{
+  font-size:40px;
+}
+
+/* Products grid */
+
+.products{
+  width:90%;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding-bottom:40px;
+}
+
+/* Card Animation */
+
+.card{
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  transition:all 0.4s ease;
+  animation:slideUp 0.7s ease;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Image zoom effect */
+
+.card img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  transition:transform 0.5s ease;
+}
+
+.card:hover img{
+  transform:scale(1.08);
+}
+
+/* Content */
+
+.card-content{
+  padding:15px;
+}
+
+.card h2{
+  margin-bottom:10px;
+}
+
+.price{
+  color:green;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+/* Button animation */
+
+.add-btn{
+  background:#111;
+  color:white;
+  width:100%;
+  transition:0.3s ease;
+}
+
+.add-btn:hover{
+  background:#ff9800;
+  transform:scale(1.03);
+}
+
+/* Theme Button */
+
+.theme-btn{
+  background:#ff9800;
+  color:white;
+  transition:0.3s ease;
+}
+
+.theme-btn:hover{
+  transform:rotate(8deg) scale(1.08);
+}
+
+/* Navbar animation */
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+  background:#111;
+  color:white;
+  flex-wrap:wrap;
+  animation:topDown 0.8s ease;
+}
+
+/* Keyframes */
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+  }
+  to{
+    opacity:1;
+  }
+}
+
+@keyframes slideUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes topDown{
+  from{
+    opacity:0;
+    transform:translateY(-40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🛒 ShopSmart</div>
+
+  <nav>
+    <input type="text" id="search" placeholder="Search Product">
+    <button class="theme-btn" id="themeBtn">🌙 Dark</button>
+    <div class="cart-box">
+      Cart: <span id="cartCount">0</span>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Modern E-Commerce Website</h1>
+  <p>Built with HTML, CSS & JavaScript</p>
+</section>
+
+<section class="products" id="productContainer"></section>
+
+<script>
+const products = [
+{
+id:1,
+name:"Wireless Headphones",
+price:1499,
+image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"
+},
+{
+id:2,
+name:"Smart Watch",
+price:2999,
+image:"https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500"
+},
+{
+id:3,
+name:"Running Shoes",
+price:2499,
+image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
+},
+{
+id:4,
+name:"Laptop Bag",
+price:999,
+image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500"
+},
+{
+id:5,
+name:"Gaming Mouse",
+price:799,
+image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=500"
+},
+{
+id:6,
+name:"Keyboard",
+price:1299,
+image:"https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=500"
+}
+];
+
+const container = document.getElementById("productContainer");
+const searchInput = document.getElementById("search");
+const cartCount = document.getElementById("cartCount");
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+cartCount.innerText = cart.length;
+
+function displayProducts(items){
+
+container.innerHTML="";
+
+items.forEach(product=>{
+
+container.innerHTML += `
+<div class="card">
+<img src="${product.image}" alt="product">
+
+<div class="card-content">
+<h2>${product.name}</h2>
+<p class="price">₹${product.price}</p>
+
+<button class="add-btn" onclick="addToCart(${product.id})">
+Add To Cart
+</button>
+</div>
+</div>
+`;
+
+});
+}
+
+function addToCart(id){
+cart.push(id);
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+cartCount.innerText = cart.length;
+
+alert("Product Added To Cart");
+}
+
+searchInput.addEventListener("input",()=>{
+
+const value = searchInput.value.toLowerCase();
+
+const filtered = products.filter(product=>
+product.name.toLowerCase().includes(value)
+);
+
+displayProducts(filtered);
+});
+
+document.getElementById("themeBtn")
+.addEventListener("click",()=>{
+document.body.classList.toggle("dark");
+});
+
+displayProducts(products);
+</script>
+
+</body>
+</html>
